@@ -1,0 +1,16 @@
+axios-0.18.0
+axios-retry-3.1.1
+bootstrap-3.3.7
+history-3.0.0
+jquery-3.3.1
+less-3.0.1
+lodash.orderby-4.6.0
+patternfly-3.59.0
+patternfly-react-2.36.0
+table-resolver-4.1.1
+react-16.4.1
+react-addons-css-transition-group-15.6.2
+react-autosuggest-9.3.4
+react-dom-16.4.1
+redux-3.7.2
+webpack-4.12.0
