@@ -1,30 +1,25 @@
-FORTMAT_TEMPLATE = "service-package_evolution_service:{COMPONENT}/{PACKAGE}"
+FORTMAT_TEMPLATE = "service-package_evolution_service:{COMPONENT}/{PACKAGE}\n"
 
 
-f_manifest = open("pes_manifest.txt", "w")
+def write_packages(package_type, f_write):
+    """
+    Read list of rpm packages, format them and write to file.
+    """
+    with open("{}_packages.txt".format(package_type), "r") as f_read:
+        for i in f_read:
+            res = FORTMAT_TEMPLATE.format(COMPONENT=package_type, PACKAGE=i.strip())
+            f_write.write(res)
 
-# Takes list of rpm packages that are in PES pod, formats them and saves to manifest file.
-f_pod = open("pes_container_packages.txt", "r")
-for i in f_pod:
-    res = FORTMAT_TEMPLATE.format(COMPONENT="pes_container", PACKAGE=i.strip())
-    f_manifest.write(res + "\n")
-f_pod.close()
 
-# Takes list of PES backend packages, formats them and saves to manifest file.
-f_backend = open("pes_backend_packages.txt", "r")
-for i in f_backend:
-    res = FORTMAT_TEMPLATE.format(COMPONENT="pes_backend", PACKAGE=i.strip())
-    f_manifest.write(res + "\n")
-f_backend.close()
+with open("pes_manifest.txt", "w") as f_manifest:
+    # Write rpm packages that are in PES pod to the manifest file.
+    write_packages("pes_container", f_manifest)
 
-# Takes list of PES frontend packages, formats them and saves to manifest file.
-f_frontend = open("pes_frontend_packages.txt", "r")
-for i in f_frontend:
-    res = FORTMAT_TEMPLATE.format(COMPONENT="pes_frontend", PACKAGE=i.strip())
-    f_manifest.write(res + "\n")
-f_frontend.close()
+    # Write PES backend rpm packages to the manifest file.
+    write_packages("pes_backend", f_manifest)
 
-# Add dockerfile image
-f_manifest.write("Dockerfile-FROM-registry.access.redhat.com/rhel7.6:latest\n")
+    # Write PES frontend rpm packages to the manifest file.
+    write_packages("pes_frontend", f_manifest)
 
-f_manifest.close()
+    # Add dockerfile image
+    f_manifest.write("Dockerfile-FROM-registry.access.redhat.com/rhel7.6:latest\n")
