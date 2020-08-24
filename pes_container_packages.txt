@@ -56,7 +56,6 @@ iproute-4.11.0-25.el7_7.2
 iptables-1.4.21-34.el7
 iputils-20160308-10.el7
 json-c-0.11-4.el7_0
-kernel-3.10.0-1127.10.1.el7
 keyutils-1.5.8-3.el7
 kmod-20-23.el7
 krb5-1.15.1-37.el7_6
