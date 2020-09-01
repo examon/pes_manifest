@@ -1,4 +1,4 @@
-FORTMAT_TEMPLATE = "service-package_evolution:{COMPONENT}/{PACKAGE}\n"
+FORTMAT_TEMPLATE = "service-package-evolution:{COMPONENT}/{PACKAGE}\n"
 
 
 def write_packages(package_type, f_write):
